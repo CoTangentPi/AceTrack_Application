@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var leftScore = 0
     @State private var rightScore = 0
+    @State private var showingSettings = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -111,6 +112,17 @@ struct ContentView: View {
             .padding(.bottom, 8)
         }
         .edgesIgnoringSafeArea(.all)
+        .simultaneousGesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.translation.height < -50 && value.startLocation.y > 120 {
+                        showingSettings = true
+                    }
+                }
+        )
+        .sheet(isPresented: $showingSettings) {
+            SettingsView(leftScore: $leftScore, rightScore: $rightScore)
+        }
     }
 }
 

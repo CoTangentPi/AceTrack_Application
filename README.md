@@ -12,6 +12,7 @@ A sleek and intuitive Apple Watch app for tracking scores in tennis and other co
 
 See AceTrack in action! Watch the demo video to see how easy it is to track scores on your Apple Watch:
 
+https://github.com/user-attachments/assets/34a7a9fe-1081-4d1e-b756-e44f277c760a
 
 **Note**: Demo will showcase version 1.0 features and functionality
 

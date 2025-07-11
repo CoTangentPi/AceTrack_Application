@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var leftScore = 0
     @State private var rightScore = 0
+    @State private var leftPlayerName = "P1"
+    @State private var rightPlayerName = "P2"
     @State private var showingSettings = false
     
     var body: some View {
@@ -21,7 +23,7 @@ struct ContentView: View {
                     leftScore += 1
                 }) {
                     VStack(spacing: 8) {
-                        Text("P1")
+                        Text(leftPlayerName)
                             .font(.caption)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -41,7 +43,7 @@ struct ContentView: View {
                     rightScore += 1
                 }) {
                     VStack(spacing: 8) {
-                        Text("P2")
+                        Text(rightPlayerName)
                             .font(.caption)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -66,12 +68,12 @@ struct ContentView: View {
                         leftScore -= 1
                     }
                 }) {
-                    Text("-")
-                        .font(.title2)
+                    Text("-1")
+                        .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(width: 30, height: 30)
-                        .background(Color.red.opacity(0.8))
+                        .background(Color.blue.opacity(0.8))
                         .clipShape(Circle())
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -98,12 +100,12 @@ struct ContentView: View {
                         rightScore -= 1
                     }
                 }) {
-                    Text("-")
-                        .font(.title2)
+                    Text("-1")
+                        .font(.caption)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .frame(width: 30, height: 30)
-                        .background(Color.blue.opacity(0.8))
+                        .background(Color.red.opacity(0.8))
                         .clipShape(Circle())
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -121,7 +123,7 @@ struct ContentView: View {
                 }
         )
         .sheet(isPresented: $showingSettings) {
-            SettingsView(leftScore: $leftScore, rightScore: $rightScore)
+            SettingsView(leftScore: $leftScore, rightScore: $rightScore, leftPlayerName: $leftPlayerName, rightPlayerName: $rightPlayerName)
         }
     }
 }
